@@ -10,8 +10,9 @@
                   @if ($kategori == 'terbaca')
                     Terbaca
                   @else
+                  {{-- masih kurang tepat --}}
                     @foreach ($buku as $book)
-                    {{$book->kategoris->name}}
+                    {{$book->first()->kategoris->name}}
                     @endforeach
                   @endif
                 </div>
