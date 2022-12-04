@@ -141,6 +141,8 @@ class BukuController extends Controller
         $data = DB::table('kategoris')->get();
         // mengambil inputan dari sorting
         $kategori = $request->kategori;
+        // mengambil pembaca dan dibandingkan dg buku untuk mengecek status
+        $cek = DB::table('pembacas')->get();
         // memmbuat objek dengan nama coba
         $coba = new read($kategori);
 
@@ -151,7 +153,7 @@ class BukuController extends Controller
         }
 
         // dd($buku);
-        return view('sort.kategori', compact('buku', 'data'));
+        return view('sort.kategori', compact('buku', 'data', 'cek'));
 
     }
 }

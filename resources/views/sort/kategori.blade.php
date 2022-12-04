@@ -19,6 +19,16 @@
                                     <h5 class="card-title">Judul {{$b->judul}}</h5>
                                     <p class="card-text">
                                       Penulis : {{$b->penulis}}<br>
+                                      Jumlah Pembaca : {{$Jumlah = count($cek->where('bukus_id', '=', $b->id))}}
+                                      @guest
+
+                                      @else
+                                        @foreach ($cek as $c) 
+                                          @if($c->bukus_id == $b->id && $c->pembaca == Auth::user()->name)
+                                            {!! '<br>'.'<label class="bg-success ps-2 pe-2 text-light" style="border-radius: 40px;">Terbaca</label>'!!}
+                                          @endif
+                                        @endforeach
+                                      @endguest
                                     </p>
                                     <input type="hidden" value="{{$b->id}}" name="bukus_id">
                                     <div class="d-flex">
