@@ -33,6 +33,8 @@
                                         @foreach ($cek as $c) 
                                           @if($c->bukus_id == $b->id && $c->pembaca == Auth::user()->name)
                                             {!! '<br>'.'<label class="bg-success ps-2 pe-2 text-light" style="border-radius: 40px;">Terbaca</label>'!!}
+                                          {{-- @elseif($c->bukus_id != $b->id && $c->pembaca != Auth::user()->name)
+                                            {!! '<br>'.'<label class="bg-info ps-2 pe-2 text-light" style="border-radius: 40px;">Belum Baca</label>'!!} --}}
                                           @endif
                                         @endforeach
                                       @endguest
