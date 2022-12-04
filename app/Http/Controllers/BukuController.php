@@ -176,6 +176,7 @@ class read extends sort{
         if($this->kategori == 'terbaca'){
             $data = DB::table('pembacas')
             ->join('bukus', 'bukus.id', '=', 'pembacas.bukus_id')
+            ->where('pembacas.pembaca', '=', Auth::user()->name)
             ->get();
             return $data;
         }
