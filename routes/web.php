@@ -22,21 +22,29 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::middleware('auth')->group(function () {
+    Route::resource('pembaca', PembacaController::class);
+
+    Route::resource('buku', BukuController::class);
+    Route::get('deletbuku/{buku}', [BukuController::class, 'destroy'])->name('deletbuku');
+
+});
+
+Route::middleware(['auth', 'admin'])->group(function(){
+    Route::resource('user', UserController::class);
+    Route::get('deteluser/{id}', [UserController::class, 'destroy'])->name('deletuser');
+
+    Route::resource('kategori', KategoriController::class);
+    Route::get('detelkategori/{kategori}', [KategoriController::class, 'destroy'])->name('deletkategori');
+});
+
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('user', UserController::class);
-Route::get('deteluser/{id}', [UserController::class, 'destroy'])->name('deletuser');
 
-Route::resource('kategori', KategoriController::class);
-Route::get('detelkategori/{kategori}', [KategoriController::class, 'destroy'])->name('deletkategori');
 
-Route::resource('buku', BukuController::class);
-Route::get('deletbuku/{buku}', [BukuController::class, 'destroy'])->name('deletbuku');
-
-Route::resource('pembaca', PembacaController::class);
-
+// Untuk mengakses halaman depan
 Route::get('/', [BukuController::class, 'depan'])->name('/');
 
-// sort berdasarkan kategori
+// route untuk sort berdasarkan kategori & terbaca
 Route::post('/sort', [BukuController::class, 'sort'])->name('sort');
