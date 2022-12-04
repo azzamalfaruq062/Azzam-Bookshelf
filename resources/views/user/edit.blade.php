@@ -22,7 +22,7 @@
             <div class="mb-2">
                 <label>Status :</label>
                 <select class="form-control" name="status">
-                    <option value="{{$data->role}}" selected>{{Str::ucfirst($data->role)}}</option>
+                    <option value="{{$data->status}}" selected>{{Str::ucfirst($data->status)}}</option>
                     <option value="aktif">Aktif</option>
                     <option value="tidak">Tidak Aktif</option>
                 </select>
