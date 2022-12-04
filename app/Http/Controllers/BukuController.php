@@ -153,7 +153,7 @@ class BukuController extends Controller
         }
 
         // dd($buku);
-        return view('sort.kategori', compact('buku', 'data', 'cek'));
+        return view('sort.kategori', compact('buku', 'data', 'cek', 'kategori'));
 
     }
 }

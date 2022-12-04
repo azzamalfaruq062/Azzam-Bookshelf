@@ -7,7 +7,13 @@
         <div class="col-12">
             <div class="card mt-3">
                 <div class="card-header">
-                    {{-- {{$b->kategoris->name}} --}}
+                  @if ($kategori == 'terbaca')
+                    Terbaca
+                  @else
+                    @foreach ($buku as $book)
+                    {{$book->kategoris->name}}
+                    @endforeach
+                  @endif
                 </div>
                 <div class="card-body">
                     <div class="row">
